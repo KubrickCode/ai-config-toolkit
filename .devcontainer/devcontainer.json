@@ -1,0 +1,22 @@
+{
+  "name": "ai-config-toolkit",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "workspace",
+  "workspaceFolder": "/workspaces/ai-config-toolkit",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "./local-features/just": {},
+    "./local-features/node": {}
+  },
+  "postCreateCommand": "bash /workspaces/ai-config-toolkit/.devcontainer/post-create.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": ["esbenp.prettier-vscode"],
+      "settings": {
+        "prettier.resolveGlobalModules": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  },
+  "remoteUser": "root"
+}
