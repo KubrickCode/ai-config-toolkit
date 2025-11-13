@@ -63,6 +63,23 @@ project-root/
 └── tsconfig.json
 ```
 
+## Next.js
+
+```
+project-root/
+├── app/
+│   ├── (routes)/           # 페이지 (route groups)
+│   ├── actions/            # Server Actions (내부 변경)
+│   └── api/                # API Routes (외부 통합 전용)
+├── components/             # 공유 컴포넌트
+├── lib/                    # 유틸리티 및 클라이언트
+├── public/                 # 정적 에셋
+├── middleware.ts           # Edge/Node.js 미들웨어
+├── next.config.js
+├── package.json
+└── tsconfig.json
+```
+
 ## Go
 
 ```

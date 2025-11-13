@@ -63,6 +63,23 @@ project-root/
 └── tsconfig.json
 ```
 
+## Next.js
+
+```
+project-root/
+├── app/
+│   ├── (routes)/           # Pages (route groups)
+│   ├── actions/            # Server Actions (internal mutations)
+│   └── api/                # API Routes (external integrations only)
+├── components/             # Shared components
+├── lib/                    # Utilities and clients
+├── public/                 # Static assets
+├── middleware.ts           # Edge/Node.js middleware
+├── next.config.js
+├── package.json
+└── tsconfig.json
+```
+
 ## Go
 
 ```
