@@ -2,6 +2,9 @@ set dotenv-load := true
 
 root_dir := justfile_directory()
 
+deps:
+    yarn install
+
 lint target="all":
     #!/usr/bin/env bash
     set -euox pipefail
@@ -14,7 +17,7 @@ lint target="all":
         just --fmt --unstable
         ;;
       config)
-        prettier --write "**/*.{json,yml,yaml,md}"
+        npx prettier --write "**/*.{json,yml,yaml,md}"
         ;;
       *)
         echo "Unknown target: {{ target }}"
