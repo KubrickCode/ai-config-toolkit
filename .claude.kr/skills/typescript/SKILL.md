@@ -150,9 +150,13 @@ description: |
 
 - Optional Chaining (`?.`) 적극 사용
 - Nullish Coalescing (`??`)으로 기본값 제공
-- `null`과 `undefined` 중 하나만 사용 (일관성)
-  - 권장: `undefined` 사용 (함수 파라미터 기본값과 일관)
-  - `null`은 외부 API 응답 등 불가피한 경우에 사용
+- `null`과 `undefined`를 의미에 따라 구분:
+  - `undefined`: 초기화되지 않은 상태, 선택적 매개변수, 아직 값이 할당되지 않은 경우
+  - `null`: 의도적으로 "값이 없음"을 표현하는 경우 (Go의 nil과 유사)
+- 예시:
+  - 선택적 필드: `{ name?: string }` → `undefined` 가능
+  - 의도적으로 비운 값: `user.profileImage = null`
+  - 외부 API 응답은 해당 규칙을 따를 수 있음
 
 ## 코드 스타일
 
