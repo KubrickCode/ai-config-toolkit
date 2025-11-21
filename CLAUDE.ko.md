@@ -18,6 +18,10 @@
   - 스킬 경로: .claude/skills/{name}/SKILL.md
   - 📚 필수: 응답 끝에 로드한 스킬 표시: `📚 Skills loaded: {skill1}, {skill2}, ...`
 - Claude가 같은 실수를 반복하면 CLAUDE.md에 명시적 금지 사항 추가 (실패 기반 문서화)
+- 생성하는 모든 콘텐츠(주석, 에러 메시지, 로그, 테스트 설명, 문서)는 프로젝트 언어 컨벤션을 따를 것
+  - 기존 코드베이스를 확인하여 프로젝트 언어 감지 (한국어/영어 등)
+  - 대화 언어와 무관하게 항상 프로젝트 컨벤션을 따를 것
+  - 예시: 영어 프로젝트 → `describe("User authentication")`, `describe("사용자 인증")` 금지
 - 워크스페이스 도구 컨벤션 준수
   - 항상 워크스페이스의 패키지 매니저 사용 (락 파일로 감지: pnpm-lock.yaml → pnpm, yarn.lock → yarn, package-lock.json → npm)
   - justfile에 태스크가 있거나 반복 작업 추가 시 just 명령어 선호

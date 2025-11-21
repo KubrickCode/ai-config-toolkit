@@ -18,6 +18,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   - Skills path: .claude/skills/{name}/SKILL.md
   - 📚 REQUIRED: Display loaded skills at response END: `📚 Skills loaded: {skill1}, {skill2}, ...`
 - If Claude repeats the same mistake, add an explicit ban to CLAUDE.md (Failure-Driven Documentation)
+- Follow project language conventions for ALL generated content (comments, error messages, logs, test descriptions, docs)
+  - Check existing codebase to detect project language (Korean/English/etc.)
+  - Do NOT mix languages based on conversation language - always follow project convention
+  - Example: English project → `describe("User authentication")`, NOT `describe("사용자 인증")`
 - Respect workspace tooling conventions
   - Always use workspace's package manager (detect from lock files: pnpm-lock.yaml → pnpm, yarn.lock → yarn, package-lock.json → npm)
   - Prefer just commands when task exists in justfile or adding recurring tasks
