@@ -49,11 +49,6 @@
     "prisma": {
       "command": "npx",
       "args": ["-y", "prisma", "mcp"]
-    },
-    "eslint": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["@eslint/mcp@latest"]
     }
   }
 }
