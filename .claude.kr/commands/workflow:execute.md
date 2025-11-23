@@ -10,40 +10,58 @@ description: plan.md의 커밋 N 실행 및 요약 생성
 $ARGUMENTS
 ```
 
-예상 형식: `/execute-issue N` (N은 커밋 번호)
+예상 형식:
+
+- `/workflow:execute 작업명 N` (작업명과 커밋 번호)
+- `/workflow:execute N` (커밋 번호만 - 최근 plan.md 검색)
+
+예시:
+
+- `/workflow:execute REFACTORING 1`
+- `/workflow:execute API-REDESIGN 2`
+- `/workflow:execute 1` (최근 plan.md 사용)
 
 ---
 
 ## 개요
 
-1. **전제조건 확인**:
-   - `docs/work/WORK-{name}/plan.md` 존재 확인
-   - $ARGUMENTS에서 커밋 번호 추출 (예: `/execute-issue 1` → 1)
-   - 없으면 오류: "Run /plan-issue first"
+1. **사용자 입력 파싱**:
+   - $ARGUMENTS에 두 부분이 있는 경우 (예: "REFACTORING 1"):
+     - 첫 부분에서 작업명 추출 (예: "REFACTORING")
+     - 두 번째 부분에서 커밋 번호 추출 (예: 1)
+     - 대상: `docs/work/WORK-{작업명}/plan.md`
+   - $ARGUMENTS에 숫자만 있는 경우 (예: "1"):
+     - 커밋 번호 추출
+     - `docs/work/WORK-*/`에서 가장 최근 수정된 `plan.md` 찾기
+     - 없으면 오류: "plan.md를 찾을 수 없습니다. 사용법: /workflow:execute 작업명 N"
 
-2. **컨텍스트 로딩**:
+2. **전제조건 확인**:
+   - 대상 `plan.md` 존재 확인
+   - 없으면 오류: "WORK-{작업명}에 대해 먼저 /workflow:plan을 실행하세요"
+
+3. **컨텍스트 로딩**:
    - **필수**: plan.md의 해당 커밋 체크리스트 읽기
    - **선택**: 심도있는 작업이면 analysis.md도 참조
    - 기존 summary-commit-N.md 확인 (수정 사이클 대응)
 
-3. **Skills 참조**:
+4. **Skills 참조**:
    - `.claude/skills/` 메타데이터 확인
    - 코딩 원칙 **절대 준수**
 
-4. **작업 실행**:
+5. **작업 실행**:
    - plan.md의 체크리스트 항목 순차 실행
    - 파일 생성/수정
    - 테스트 작성
 
-5. **검증**:
+6. **검증**:
    - 테스트 실행
    - 동작 확인
 
-6. **요약 생성/덮어쓰기**:
-   - `docs/work/WORK-{name}/summary-commit-N.md` 생성
+7. **요약 생성/덮어쓰기**:
+   - `docs/work/WORK-{작업명}/summary-commit-N.md` 생성
    - 기존 파일 있으면 덮어쓰기 (최종 상태만 유지)
 
-7. **완료 보고**:
+8. **완료 보고**:
    - 변경된 파일 목록
    - 검증 결과
    - 남은 커밋 개수
