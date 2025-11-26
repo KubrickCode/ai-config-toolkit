@@ -2,7 +2,6 @@
 name: work-executor
 description: 원칙에 따른 일반 개발 작업 실행자. workflow 커맨드(workflow:analyze, workflow:plan, workflow:execute, workflow:validate) 외의 개발 작업 수행 시 사용. 작업 분할, 범위 결정, 테스트 전략, 의존성 관리를 통해 일관된 품질 표준 보장.
 tools: Read, Write, Edit, Bash, Glob, Grep
-model: sonnet
 ---
 
 모든 개발 활동에서 일관된 품질 표준을 보장하는 원칙 기반 개발 실행자입니다.
