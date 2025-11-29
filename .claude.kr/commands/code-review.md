@@ -8,6 +8,7 @@ description: 현재 git 변경사항 또는 최신 커밋을 code-reviewer와 ar
 ## 목적
 
 현재 변경사항 또는 최신 커밋에 대한 종합적인 코드 리뷰 수행. 자동으로 호출되는 에이전트:
+
 - **code-reviewer 에이전트**: 항상 (코드 품질, 보안, 유지보수성)
 - **architect-reviewer 에이전트**: 조건부 (아키텍처 영향 평가)
 
@@ -18,11 +19,13 @@ description: 현재 git 변경사항 또는 최신 커밋을 code-reviewer와 ar
 ### 1. 리뷰 대상 결정
 
 **커밋되지 않은 변경사항 확인:**
+
 ```bash
 git status --porcelain
 ```
 
 **결정:**
+
 - 변경사항 있음: `git diff`로 미커밋 변경사항 리뷰
 - 변경사항 없음: `git log -1` 및 `git show HEAD`로 최신 커밋 리뷰
 
@@ -31,12 +34,14 @@ git status --porcelain
 **git 출력에서 메트릭 추출:**
 
 수치화:
+
 - 변경된 파일 수
 - 추가/삭제된 라인 수
 - 영향받는 디렉토리 수
 - 신규 파일 vs 수정 파일
 
 탐지:
+
 - 데이터베이스 마이그레이션 파일 (`migrations/`, `schema.prisma`, `*.sql`)
 - API 계약 파일 (`*.graphql`, `openapi.yaml`, API 라우트 파일)
 - 설정 파일 (`package.json`, `go.mod`, `docker-compose.yml`)
@@ -74,16 +79,16 @@ code-reviewer 에이전트는 Read, Write, Edit, Bash, Grep 도구에 접근하�
 
 **범위 분류 기준** (해당 기준마다 점수 부여):
 
-| 기준 | 임계값 | 점수 |
-|------|--------|------|
-| 변경된 파일 수 | ≥ 8개 파일 | +1 |
-| 변경된 라인 수 | ≥ 300줄 | +1 |
-| 영향받는 디렉토리 | ≥ 3개 디렉토리 | +1 |
-| 새 모듈/패키지 | 3개 이상 파일이 있는 새 디렉토리 | +1 |
-| API 계약 변경 | 수정: schema/, .graphql, api/, 라우트 파일 | +1 |
-| 데이터베이스 스키마 | 수정: migrations, 스키마 파일, ORM 모델 | +1 |
-| 설정/인프라 | 수정: docker-compose, Dockerfile, K8s, CI/CD | +1 |
-| 의존성 변경 | 수정: package.json, go.mod, requirements.txt | +1 |
+| 기준                | 임계값                                       | 점수 |
+| ------------------- | -------------------------------------------- | ---- |
+| 변경된 파일 수      | ≥ 8개 파일                                   | +1   |
+| 변경된 라인 수      | ≥ 300줄                                      | +1   |
+| 영향받는 디렉토리   | ≥ 3개 디렉토리                               | +1   |
+| 새 모듈/패키지      | 3개 이상 파일이 있는 새 디렉토리             | +1   |
+| API 계약 변경       | 수정: schema/, .graphql, api/, 라우트 파일   | +1   |
+| 데이터베이스 스키마 | 수정: migrations, 스키마 파일, ORM 모델      | +1   |
+| 설정/인프라         | 수정: docker-compose, Dockerfile, K8s, CI/CD | +1   |
+| 의존성 변경         | 수정: package.json, go.mod, requirements.txt | +1   |
 
 **결정**:
 
@@ -164,13 +169,16 @@ architect-reviewer 에이전트는 종합적인 분석을 위해 Read, Write, Ed
 에이전트 피드백을 기반으로 액션 아이템 생성:
 
 ### 치명적 (반드시 수정)
+
 - [ ] {이슈 1}
 - [ ] {이슈 2}
 
 ### 우선순위 높음 (수정 권장)
+
 - [ ] {이슈 3}
 
 ### 제안 (고려)
+
 - [ ] {개선 1}
 
 ---
@@ -223,6 +231,7 @@ architect-reviewer 에이전트는 종합적인 분석을 위해 Read, Write, Ed
 9. 실행 가능한 체크리스트 생성
 
 **토큰 최적화:**
+
 - 메트릭에 `git diff --stat`와 `git show --stat` 사용 (전체 diff 파싱 회피)
 - 전체 diff 내용은 에이전트에만 전달, 자체 분석에는 사용하지 않음
 - 에이전트가 파일 읽기 처리하도록 함 - 변경된 모든 파일 미리 읽지 않음

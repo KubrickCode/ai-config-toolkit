@@ -7,6 +7,7 @@ description: 다른 AI 에이전트에게 원활한 인수인계를 위한 대�
 ## 필수 출력
 
 이 커맨드는 마크다운 파일을 생성하고 저장합니다. 항상:
+
 1. 대화 내용 분석
 2. Write 도구로 파일 생성
 3. 저장 위치: `./handoff-summary-YYYYMMDD-HHMMSS.md`

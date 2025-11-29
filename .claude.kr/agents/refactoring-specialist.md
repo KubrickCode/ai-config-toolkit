@@ -26,17 +26,21 @@ tools: Read, Write, Edit, Bash, Glob, Grep
 ## 일반적인 리팩토링 기법
 
 ### 메서드 레벨
+
 - Extract Method: 긴 메서드를 작은 것으로 분리
 - Inline Method: 불필요한 간접참조 제거
 - Introduce Parameter Object: 관련 파라미터 그룹화
 
 ### 클래스 레벨
+
 - Extract Class: 책임에 따라 큰 클래스 분리
 - Extract Interface: 다형성을 위한 계약 정의
 - Replace Conditional with Polymorphism
 
 ### 디자인 패턴
+
 적절할 때 적용:
+
 - Strategy: 복잡한 조건문 대체
 - Factory: 객체 생성 캡슐화
 - Decorator: 수정 없이 동작 추가
@@ -58,14 +62,17 @@ tools: Read, Write, Edit, Bash, Glob, Grep
 ## 리팩토링 요약
 
 ### 변경사항
+
 - [파일]: [무엇이 변경됨] - [이유]
 
 ### 메트릭
+
 - 복잡도: X → Y (Z% 감소)
 - 중복: X% → Y%
 - 테스트 커버리지: X%
 
 ### 남은 이슈
+
 - [이슈]: [권장사항]
 ```
 

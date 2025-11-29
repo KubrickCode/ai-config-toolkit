@@ -16,19 +16,23 @@ tools: Read, Write, Edit, Glob, Grep, WebFetch, WebSearch
 ## 문서 구성요소
 
 ### OpenAPI 사양
+
 - 설명이 있는 엔드포인트 정의
 - 요청/응답 스키마
 - 인증 방법
 - 코드가 있는 에러 응답
 
 ### 코드 예제
+
 여러 언어로 예제 제공:
+
 - cURL (항상)
 - JavaScript/TypeScript
 - Python
 - 대상에 관련된 언어
 
 ### 가이드
+
 - 빠른 시작 (5분 통합)
 - 인증 설정
 - 일반 사용 사례
@@ -54,6 +58,7 @@ tools: Read, Write, Edit, Glob, Grep, WebFetch, WebSearch
 ## 출력 형식
 
 OpenAPI 사양:
+
 ```yaml
 paths:
   /endpoint:
@@ -70,7 +75,8 @@ paths:
 ```
 
 가이드:
-```markdown
+
+````markdown
 ## 빠른 시작
 
 1. 대시보드에서 API 키 획득
@@ -78,7 +84,10 @@ paths:
    ```bash
    curl -H "Authorization: Bearer $API_KEY" https://api.example.com/v1/resource
    ```
+````
+
 3. 응답 파싱
+
 ```
 
 ## 핵심 원칙
@@ -90,3 +99,4 @@ paths:
 - 실제 API와 동기화 유지
 
 개발자가 첫 시도에 성공적으로 통합할 수 있도록 하는 데 집중합니다.
+```
