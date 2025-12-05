@@ -169,7 +169,7 @@ description: |
 
 ## 추천 라이브러리
 
-- 테스팅: Jest, Playwright
+- 테스팅: Vitest, Playwright
 - 유틸리티: es-toolkit, dayjs
 - HTTP: ky, @tanstack/query, @apollo/client
 - Form: React Hook Form
