@@ -28,12 +28,12 @@ $ARGUMENTS
 
 **해석**:
 
-| 입력 | 동작 |
-| --- | --- |
-| 비어있음 | 전체 코드베이스 분석 |
-| 경로 (예: `src/legacy/`) | 지정된 디렉토리 분석 |
-| `--dry-run` | 보고만, 삭제 없음 |
-| `--auto` | HIGH 신뢰도 항목 확인 없이 삭제 |
+| 입력                     | 동작                            |
+| ------------------------ | ------------------------------- |
+| 비어있음                 | 전체 코드베이스 분석            |
+| 경로 (예: `src/legacy/`) | 지정된 디렉토리 분석            |
+| `--dry-run`              | 보고만, 삭제 없음               |
+| `--auto`                 | HIGH 신뢰도 항목 확인 없이 삭제 |
 
 ---
 
@@ -41,15 +41,15 @@ $ARGUMENTS
 
 ### 절대 보존 대상
 
-| 카테고리 | 탐지 방법 | 예시 |
-| --- | --- | --- |
-| **Public API** | `package.json` exports, `index.ts` re-exports | 라이브러리 진입점 |
-| **계획된 기능** | 티켓/이슈가 있는 TODO/FIXME | `// TODO(#123): 구현 예정` |
-| **프레임워크 규칙** | 경로 기반 (pages/, app/, api/) | Next.js 라우트, NestJS 모듈 |
-| **테스트 인프라** | `*.test.*`, `*.spec.*`에서 import | Fixtures, mocks, 테스트 유틸 |
-| **동적 Import** | `import()`, `require()` 패턴 | Lazy loading, code splitting |
-| **빌드 의존성** | package.json scripts에서 참조 | 빌드 도구, CLI 스크립트 |
-| **외부 계약** | GraphQL 타입, API 스키마 | 스키마 정의 |
+| 카테고리            | 탐지 방법                                     | 예시                         |
+| ------------------- | --------------------------------------------- | ---------------------------- |
+| **Public API**      | `package.json` exports, `index.ts` re-exports | 라이브러리 진입점            |
+| **계획된 기능**     | 티켓/이슈가 있는 TODO/FIXME                   | `// TODO(#123): 구현 예정`   |
+| **프레임워크 규칙** | 경로 기반 (pages/, app/, api/)                | Next.js 라우트, NestJS 모듈  |
+| **테스트 인프라**   | `*.test.*`, `*.spec.*`에서 import             | Fixtures, mocks, 테스트 유틸 |
+| **동적 Import**     | `import()`, `require()` 패턴                  | Lazy loading, code splitting |
+| **빌드 의존성**     | package.json scripts에서 참조                 | 빌드 도구, CLI 스크립트      |
+| **외부 계약**       | GraphQL 타입, API 스키마                      | 스키마 정의                  |
 
 ### 특수 케이스
 
@@ -139,11 +139,11 @@ grep -rn "DEPRECATED" --include="*.ts" --include="*.go"
 
 **신뢰도 분류**:
 
-| 레벨 | 기준 | 동작 |
-| --- | --- | --- |
-| HIGH | 참조 없음, 보존 대상 아님, 명확한 죽은 코드 | 자동 삭제 (`--auto` 시) |
-| MEDIUM | 직접 참조 없음, 문자열/주석 언급 있음 | 확인 요청 |
-| LOW | Public으로 export됨, 모호한 사용 | 보고만 |
+| 레벨   | 기준                                        | 동작                    |
+| ------ | ------------------------------------------- | ----------------------- |
+| HIGH   | 참조 없음, 보존 대상 아님, 명확한 죽은 코드 | 자동 삭제 (`--auto` 시) |
+| MEDIUM | 직접 참조 없음, 문자열/주석 언급 있음       | 확인 요청               |
+| LOW    | Public으로 export됨, 모호한 사용            | 보고만                  |
 
 ### Phase 4: 안전한 삭제
 
@@ -191,11 +191,13 @@ git checkout -- {failed_files}
 ---
 
 ## 컨텍스트 ✓
+
 - Public API: src/index.ts에서 12개 export
 - 프레임워크: Next.js (pages/, app/, api/ 보존)
 - 테스트 유틸: 5개 공유 유틸리티
 
 ## 탐지 진행
+
 - Export 스캔 중... (45/120)
 - Deprecated 마커 확인 중...
 ```
@@ -212,18 +214,19 @@ git checkout -- {failed_files}
 
 ## 📊 요약
 
-| 카테고리 | 개수 | 라인 |
-| --- | --- | --- |
-| 미사용 Exports | {n} | {lines} |
-| Deprecated 코드 | {n} | {lines} |
-| 고아 파일 | {n} | {lines} |
-| **합계** | **{n}** | **{lines}** |
+| 카테고리        | 개수    | 라인        |
+| --------------- | ------- | ----------- |
+| 미사용 Exports  | {n}     | {lines}     |
+| Deprecated 코드 | {n}     | {lines}     |
+| 고아 파일       | {n}     | {lines}     |
+| **합계**        | **{n}** | **{lines}** |
 
 ---
 
 ## 🔴 삭제됨 (HIGH 신뢰도)
 
 ### {file_path}:{line}
+
 - **타입**: {function/class/variable}
 - **사유**: 참조 없음
 - **검증**: 빌드 ✓ 테스트 ✓
@@ -233,6 +236,7 @@ git checkout -- {failed_files}
 ## 🟡 스킵됨 - 리뷰 필요
 
 ### {file_path}:{line}
+
 - **타입**: {function/class/variable}
 - **탐지 사유**: {왜 죽은 코드로 탐지되었는지}
 - **스킵 사유**: {왜 보존했는지}
@@ -243,6 +247,7 @@ git checkout -- {failed_files}
 ## 🟢 보존됨 (규칙 매칭)
 
 ### {file_path}:{line}
+
 - **규칙**: {어떤 보존 규칙}
 - **상세**: {구체 사항}
 
@@ -270,10 +275,12 @@ git checkout -- {failed_files}
 ## 📋 다음 단계
 
 ### 즉시
+
 - [ ] {n}개 스킵 항목 리뷰
 - [ ] {n}개 수동 리뷰 항목 조사
 
 ### 권장
+
 - [ ] LOW 신뢰도 항목 제거 전 deprecation 공지 추가
 - [ ] 제거된 API에 대한 문서 업데이트
 - [ ] 미래 죽은 코드 방지를 위한 린트 규칙 설정
