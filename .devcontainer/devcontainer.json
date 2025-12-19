@@ -1,6 +1,7 @@
 {
   "name": "ai-config-toolkit",
   "dockerComposeFile": "docker-compose.yml",
+  "initializeCommand": "touch ${HOME}/.env.secrets",
   "service": "workspace",
   "workspaceFolder": "/workspaces/ai-config-toolkit",
   "features": {
