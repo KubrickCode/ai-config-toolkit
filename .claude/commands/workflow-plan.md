@@ -36,14 +36,10 @@ You **MUST** consider the user input before proceeding (if not empty).
    - If analysis.md exists: Extract selected approach and completion criteria
    - If not: Interpret user input as requirements (description, URL, file path, etc.)
 
-4. **Reference Skills**:
-   - Check `.claude/skills/` frontmatter
-   - Identify coding principles (e.g., TypeScript - use type, forbid interface)
-
-5. **Identify Impact Scope**:
+4. **Identify Impact Scope**:
    - List approximate classes/modules (not specific file names)
 
-6. **Decompose Commits** (Vertical Slicing):
+5. **Decompose Commits** (Vertical Slicing):
    - Each commit should be independently deployable
    - **Consider additional requirements** from user input (e.g., commit count limits, specific constraints)
    - **Forbid Horizontal Slicing**: Don't separate types/logic/tests/UI into separate commits
@@ -51,10 +47,10 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Order: Setup → Core → Integration → Polish
    - Specify verification method and "independently deployable" status for each commit
 
-7. **Review Principle Violations**:
-   - Create Complexity Tracking table if Skills principle violations are necessary
+6. **Review Principle Violations**:
+   - Create Complexity Tracking table if coding principle violations are necessary
 
-8. **Write Documents** (Dual Language):
+7. **Write Documents** (Dual Language):
    - Create `docs/work/WORK-{name}/plan.ko.md` (Korean - for user reference)
    - Create `docs/work/WORK-{name}/plan.md` (English - for agent consumption)
 
@@ -76,7 +72,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 - Checklist-focused
 - Reference analysis.md only (no repetition)
 - **Vertical Slicing**: Each commit independently deployable
-- Reflect Skills principles
+- Reflect coding principles
 - Impact scope approximate only
 
 ### ❌ Must Not Do

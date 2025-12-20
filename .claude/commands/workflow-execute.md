@@ -44,24 +44,20 @@ Examples:
    - **Optional**: Also reference analysis.md for deep context if complex work
    - Check existing summary-commit-N.md (handle revision cycle)
 
-4. **Reference Skills**:
-   - Check `.claude/skills/` frontmatter
-   - **Strictly follow** coding principles
-
-5. **Execute Tasks**:
+4. **Execute Tasks**:
    - Execute plan.md checklist items sequentially
    - Create/modify files
    - Write tests
 
-6. **Verify**:
+5. **Verify**:
    - Run tests
    - Verify behavior
 
-7. **Generate/Overwrite Summary**:
+6. **Generate/Overwrite Summary**:
    - Create `docs/work/WORK-{task-name}/summary-commit-N.md`
    - Overwrite if existing file (keep only final state)
 
-8. **Report Completion**:
+7. **Report Completion**:
    - List of changed files
    - Verification results
    - Remaining commit count
@@ -77,14 +73,14 @@ Examples:
 ### ✅ Must Do
 
 - Faithfully follow plan.md checklist
-- **Strictly follow** Skills principles
+- **Strictly follow** coding principles
 - Write tests
 - Auto-generate summary
 
 ### ❌ Must Not Do
 
 - Ignore checklist
-- Violate Skills principles (without justification)
+- Violate coding principles (without justification)
 - Skip verification
 
 ### 🎯 Implementation Rules

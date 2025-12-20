@@ -60,7 +60,7 @@ git status --porcelain
 - 에러 처리: 엣지 케이스, 에러 메시지, 복구
 - 성능: 명백한 병목, 비효율적 패턴
 - 테스트: 중요 경로 커버리지
-- 스킬 준수: .claude/skills/ 가이드라인 확인
+- 코딩 가이드라인 준수
 
 리뷰할 변경사항:
 {git diff 또는 git show 출력 붙여넣기}
@@ -194,7 +194,6 @@ architect-reviewer 에이전트는 종합적인 분석을 위해 Read, Write, Ed
 
 - **코드 직접 수정 금지** - 이 커맨드는 리뷰만 수행
 - **에이전트 자율성**: code-reviewer와 architect-reviewer는 필요에 따라 파일 읽기, 테스트 실행, 의존성 분석 가능
-- **스킬 가이드라인**: code-reviewer가 자동으로 .claude/skills/의 위반사항 확인
 - **점진적 리뷰**: 대규모 변경(20개 이상 파일)의 경우, 에이전트가 영향도 높은 영역을 우선 집중
 - **Git 안전성**: 모든 git 명령은 읽기 전용 (status, diff, log, show)
 

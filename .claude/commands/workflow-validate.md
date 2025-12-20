@@ -27,11 +27,7 @@ $ARGUMENTS
    - Extract selected approach from analysis.md
    - Identify key technical assumptions and risks
 
-3. **Reference Skills**:
-   - Check `.claude/skills/` frontmatter
-   - Apply relevant technical principles
-
-4. **Determine Validation Method**:
+3. **Determine Validation Method**:
    - Choose appropriate validation approach based on context:
      - Prototype implementation
      - UI/UX verification (Playwright MCP)
@@ -40,16 +36,16 @@ $ARGUMENTS
      - Technical documentation research
      - User verification delegation
 
-5. **Execute Validation**:
+4. **Execute Validation**:
    - Perform selected validation method
    - Create prototype code in `__prototype__/{feature-name}/` if needed
    - Collect results and evidence
 
-6. **Assess Results**:
+5. **Assess Results**:
    - Determine status: ✅ Success / ⚠️ Partial Success / ❌ Failure
    - Document findings and constraints
 
-7. **Write Documents** (Dual Language):
+6. **Write Documents** (Dual Language):
    - Create `docs/work/WORK-{name}/validation.ko.md` (Korean - for user reference)
    - Create `docs/work/WORK-{name}/validation.md` (English - for agent consumption)
    - Include clear next steps recommendation

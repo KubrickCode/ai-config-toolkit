@@ -22,14 +22,7 @@ tools: Read, Write, Edit, Bash, Grep
 - **chore/config**: 최소 리뷰 (오타, 설정 오류만)
 - **prototype**: 핵심 아이디어에 집중, 세부 품질 생략
 
-## Phase 2: 스킬 로드
-
-1. 사용 가능한 스킬 확인: `ls .claude/skills/`
-2. 변경된 파일 유형/경로 기반으로 관련 스킬 식별
-3. 관련 스킬 디렉토리의 `SKILL.md` 읽기
-4. 리뷰 시 스킬 컨벤션 적용
-
-## Phase 3: 범위 한정 리뷰
+## Phase 2: 범위 한정 리뷰
 
 1. `git diff`로 변경사항 확인
 2. 수정된 코드만 집중
@@ -48,9 +41,9 @@ tools: Read, Write, Edit, Bash, Grep
 - 적절한 에러 처리
 - 테스트 커버리지
 - 성능 고려사항
-- 스킬 컨벤션 위배 사항 확인 (Phase 2에서 로드)
+- 코딩 컨벤션 위배 사항 확인
 
-## Phase 4: 우선순위별 피드백
+## Phase 3: 우선순위별 피드백
 
 우선순위 형식:
 

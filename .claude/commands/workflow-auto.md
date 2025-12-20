@@ -45,12 +45,11 @@ This command executes the full workflow (analyze → plan → execute → commit
 Execute **exactly as `/workflow-analyze`** command:
 
 1. Parse user input, generate task name
-2. Reference Skills
-3. Define problem with concrete scenarios
-4. Investigate 2-4 solution approaches
-5. Select final approach with rejection reasons
-6. Generate clarification questions (max 3)
-7. Write documents:
+2. Define problem with concrete scenarios
+3. Investigate 2-4 solution approaches
+4. Select final approach with rejection reasons
+5. Generate clarification questions (max 3)
+6. Write documents:
    - `docs/work/WORK-{task-name}/analysis.ko.md`
    - `docs/work/WORK-{task-name}/analysis.md`
 
@@ -66,11 +65,10 @@ Execute **exactly as `/workflow-plan`** command, with one constraint:
 
 1. Parse task name from Phase 1
 2. Load analysis.md requirements
-3. Reference Skills
-4. Identify impact scope
-5. **Create single commit plan** (no commit splitting)
-6. Review principle violations if any
-7. Write documents:
+3. Identify impact scope
+4. **Create single commit plan** (no commit splitting)
+5. Review principle violations if any
+6. Write documents:
    - `docs/work/WORK-{task-name}/plan.ko.md`
    - `docs/work/WORK-{task-name}/plan.md`
 
@@ -88,13 +86,12 @@ Execute **exactly as `/workflow-execute`** command:
 
 1. Load plan.md checklist
 2. Reference analysis.md for context
-3. Reference Skills strictly
-4. Execute all tasks sequentially
-5. Write tests
-6. Verify (run tests, check behavior)
-7. Generate summary:
+3. Execute all tasks sequentially
+4. Write tests
+5. Verify (run tests, check behavior)
+6. Generate summary:
    - `docs/work/WORK-{task-name}/summary-commit-1.md`
-8. Report completion
+7. Report completion
 
 **Use the full template from workflow-execute** (not simplified).
 
@@ -124,7 +121,7 @@ Execute **exactly as `/commit`** command:
 - Use original templates (not simplified versions)
 - Execute all three phases without stopping
 - Limit plan to single commit
-- Follow Skills principles strictly
+- Follow coding principles strictly
 
 ### ❌ Must Not Do
 

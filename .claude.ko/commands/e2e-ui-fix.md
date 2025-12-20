@@ -21,7 +21,7 @@ E2E 테스트 중 발견된 버그에 대한 체계적 수정 워크플로우:
 1. **버그 리포트 로드**: docs/e2e-ui/bug-report-test-N.md 읽기 (English 버전, AI용)
 2. **버그 재현**: Playwright MCP로 버그 존재 확인
 3. **근본 원인 분석**: Grep, Read, Playwright MCP 활용
-4. **수정 구현**: Skills 원칙 준수하여 문제 수정
+4. **수정 구현**: 코딩 원칙 준수하여 문제 수정
 5. **수정 검증**: Playwright MCP로 버그 해결 확인
 6. **테스트 작성**: 회귀 방지용 Playwright 테스트 생성
 7. **문서화**: 이중언어 수정 요약 생성
@@ -133,23 +133,10 @@ browser_take_screenshot: {증거}
 
 ### 4단계: 수정 구현
 
-**관련 Skills 로드** (중요 - CLAUDE.md에서):
-
-파일 수정 전, 파일 확장자 기반 Skills 자동 로드:
-
-- `.ts` → `typescript` skill
-- `.tsx` → `typescript` + `react` skills
-- `.go` → `golang` skill
-- `.test.ts`, `.spec.ts` → `typescript-test` + `typescript` skills
-- `.graphql`, resolvers, schema → `graphql` + `typescript` skills
-- 경로 기반: `apps/web/**` → `nextjs`, `apps/api/**` → `nestjs`
-
-**응답 끝에 표시**: `📚 Skills loaded: {skill1}, {skill2}, ...`
-
 **수정 구현**:
 
 - 최소한의 집중된 변경
-- **Skills 원칙 엄격히 준수** (파일 타입 기반 로드)
+- **코딩 원칙 엄격히 준수**
 - 프로젝트 코딩 표준 준수
 - 엣지 케이스 고려
 - 필요 시 방어적 체크 추가
@@ -272,8 +259,7 @@ test.describe("Test N: {시나리오 이름}", () => {
 - **`playwright.config.ts`와 `package.json` 먼저 읽기** (프로젝트 설정용)
 - **English 버그 리포트만 읽기** (.md, ko.md 아님) - 토큰 ~50% 절약
 - **수정 시도 전에 버그 먼저 재현**
-- **파일 수정 전에 관련 Skills 로드** (확장자 기반 자동 로드)
-- **수정 구현 시 Skills 원칙 엄격히 준수**
+- **수정 구현 시 코딩 원칙 엄격히 준수**
 - 검증에 Playwright MCP 사용 (수정 전후 모두)
 - 최소한의 집중된 수정
 - **테스트 작성 전에 수정 작동 확인**
@@ -282,7 +268,6 @@ test.describe("Test N: {시나리오 이름}", () => {
 - 이중언어 수정 요약 생성 (ko.md + md)
 - 증거용 스크린샷 촬영 (수정 전, 수정 후)
 - 근본 원인과 해결책 문서화
-- **응답 끝에 로드된 skills 표시**: `📚 Skills loaded: {skill1}, {skill2}, ...`
 
 ### ❌ 절대 하지 말 것
 
@@ -290,7 +275,7 @@ test.describe("Test N: {시나리오 이름}", () => {
 - AI 분석용 Korean 버그 리포트(ko.md) 읽기 (토큰 낭비 - .md만 읽기)
 - 버그 재현 단계 건너뛰기
 - 근본 원인 이해 없이 수정
-- 코드 수정 시 Skills 원칙 위반
+- 코드 수정 시 코딩 원칙 위반
 - 수정 작동 확인 전에 테스트 코드 작성
 - playwright.config에 명시된 디렉토리 외부에 테스트 작성
 - base URL이나 테스트 디렉토리 하드코딩
@@ -675,9 +660,8 @@ test.describe("Test N: {시나리오 이름}", () => {
 ▼
 ┌─────────────────────────────────────────┐
 │ 4. 수정 구현 │
-│ - 관련 Skills 로드 │
 │ - 최소한의 변경 │
-│ - Skills 원칙 준수 │
+│ - 코딩 원칙 준수 │
 └────────────────┬────────────────────────┘
 │
 ▼
