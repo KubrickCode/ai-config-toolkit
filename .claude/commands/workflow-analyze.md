@@ -61,6 +61,22 @@ You **MUST** consider the user input before proceeding (if not empty).
 3. **Implementation Method**: Keep core changes concise, specify new dependencies
 4. **Completion Criteria**: Separate feature verification and technical implementation
 
+### 🎭 Anti-Bias Rules (CRITICAL)
+
+**Core Principle: Be honest. Don't hide what exists, don't invent what doesn't.**
+
+1. **Analyze First, Conclude Later**
+   - Complete ALL approach analysis BEFORE making any selection
+
+2. **Write What's True**
+   - If A has 5 pros and B has 1, write exactly that (no forced balance)
+   - If side effects exist, state them; if none, say so (no hiding, no inventing)
+   - When rejecting an approach, acknowledge what you're giving up
+
+3. **Neutral Language**
+   - Forbidden: "simply", "obviously", "clearly", "just", "merely"
+   - Use: "may", "could", "potentially"
+
 ### ✅ Must Do
 
 - Conclusion first (Executive Summary)
@@ -150,10 +166,18 @@ Files to create:
 **Pros**:
 
 - [Why it's good - user/technical perspective]
+- [List ALL genuine pros - don't artificially limit or inflate]
 
 **Cons**:
 
 - [Why it could be problematic]
+- [List ALL genuine cons - don't hide any]
+
+**Side Effects/Risks** (if any):
+
+- [What negative consequences may occur even when successful]
+- [Hidden costs, maintenance burden, technical debt introduced]
+- [If none: "None identified" or omit section]
 
 ### Approach 2: [Name]
 
@@ -163,25 +187,40 @@ Files to create:
 
 **Pros**:
 
-- [...]
+- [List ALL genuine pros honestly]
 
 **Cons**:
 
-- [...]
+- [List ALL genuine cons honestly]
+
+**Side Effects/Risks** (if any):
+
+- [Be honest - if none exist, say so or omit]
 
 ---
 
 ## ✅ Final Selection
 
 **Adopted**: Approach N
+
+**Trade-offs Accepted** (if any):
+
+- [Benefit from other approaches that won't be available]
+- [If none significant: "Minimal - selected approach is clearly superior for this case"]
+
+**Known Risks** (if any):
+
+- [What could go wrong even with successful implementation]
+- [If none identified: state so honestly]
+
 **Selection Reason**:
 
-- [Why this approach is most suitable]
-- [Key benefits and trade-offs]
+- [Why this approach is most suitable despite the above trade-offs]
 
-**Rejected Approaches**:
+**Rejected Approaches** (include what you're losing):
 
-- Approach X: [Rejection reason]
+- Approach X: [Rejection reason] — Would have provided: [lost benefit]
+- Approach Y: [Rejection reason] — Would have provided: [lost benefit]
 
 ---
 
@@ -230,6 +269,14 @@ Files to create:
 **If Needed**:
 
 - [Items needing additional confirmation - maximum 3]
+
+---
+
+## 🔍 Objectivity Self-Check
+
+- [ ] Wrote what's true (no hiding, no inventing)
+- [ ] Rejected approaches' lost benefits acknowledged
+- [ ] Used neutral language ("may/could", not "will/obviously")
 ```
 
 ---
@@ -331,6 +378,14 @@ Or
 - [ ] [UI implementation (if needed)]
 - [ ] [Unit tests]
 ```
+
+---
+
+### Objectivity Examples
+
+**❌ Bad**: "Best solution with no drawbacks. Approach 2 rejected: too complex."
+
+**✅ Good**: "Selected Approach 1. Trade-off: losing Approach 2's 30% better throughput. Risk: may increase memory under edge case X."
 
 ---
 
