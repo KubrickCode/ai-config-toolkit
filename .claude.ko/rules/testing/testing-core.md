@@ -2,11 +2,31 @@
 
 ## 테스트 파일 구조
 
-테스트 대상 파일과 1:1 매칭. 테스트 파일은 대상 파일과 같은 디렉토리에 위치.
+테스트 대상 파일과 1:1 매칭. 테스트 파일은 대상 파일과 같은 디렉토리에 위치. 파일 경로는 도메인 구조 반영.
+
+```
+# Good: 도메인 기반 구성
+src/auth/__tests__/login.test.ts
+src/payment/__tests__/checkout.test.ts
+
+# Bad: 평면 테스트 디렉토리
+tests/test1.test.ts
+tests/test2.test.ts
+```
 
 ## 테스트 계층
 
-메서드(함수) 단위를 대분류, 테스트 케이스를 소분류로 구성. 복잡한 메서드는 시나리오별 중분류 가능.
+중첩 suite 구조로 도메인 컨텍스트 제공. suite 경로가 테스트 목적 이해를 위한 가장 강력한 구조적 신호.
+
+```
+Good: 계층에 풍부한 컨텍스트, 간결한 테스트 이름
+  Suite: OrderService > Sorting > "created desc"
+
+Bad: 모든 컨텍스트가 테스트 이름에 집중
+  Test: "OrderService returns items sorted by creation date"
+```
+
+suite 컨텍스트가 풍부하면 짧은 테스트 이름도 허용.
 
 ## 테스트 커버리지 선택
 
@@ -41,6 +61,13 @@ AI는 커버리지는 높지만 인사이트가 낮은 테스트를 생성하는
 
 외부 의존성(API, DB, 파일 시스템) 모킹. 같은 프로젝트 내 모듈은 실제 사용 선호; 복잡도 높을 때만 모킹.
 
+## 실제 도메인 모듈 Import
+
+테스트 대상 서비스/모듈을 이름으로 실제 import. import 문이 어떤 코드를 테스트하는지 이해하는 가장 강력한 신호.
+
+- Good: 도메인 모듈 import (`OrderService`, `PaymentValidator`)
+- Bad: 테스트 유틸리티만 import하거나, import 없이 모든 것을 인라인으로 처리
+
 ## 테스트 재사용성
 
 반복되는 모킹 설정, 픽스처, 헬퍼 함수는 공통 유틸리티로 추출. 과도한 추상화로 테스트 가독성 해치지 않도록 주의.
@@ -51,7 +78,12 @@ AI는 커버리지는 높지만 인사이트가 낮은 테스트를 생성하는
 
 ## 테스트 이름
 
-"무엇이 테스트되는지" 명확히 표현. 권장 형식: "should do X when Y". 구현 세부사항보다 동작 중심.
+테스트 이름은 구현 세부사항이 아닌 동작 설명.
+
+- Good: `rejects expired tokens with 401 status`, `sorts orders by creation date descending`
+- Bad: `test token validation`, `works correctly`, `handles edge case`
+
+권장 형식: "should do X when Y" 또는 직접적인 동작 서술.
 
 ## 검증 개수
 

@@ -20,7 +20,37 @@ Vitest 사용. 프로젝트 내 일관성 유지.
 
 ## 구조
 
-`describe`로 메서드/기능 그룹화, `it`으로 개별 케이스 작성. 중첩 `describe`로 시나리오 분류 가능.
+중첩 `describe` 블록으로 도메인 컨텍스트 제공. suite 계층이 가장 강력한 구조적 신호.
+
+```typescript
+// Good: Domain > Feature > Scenario 계층
+describe('AuthService', () => {
+  describe('Login', () => {
+    it('should authenticate with valid credentials', () => { ... })
+    it('should reject invalid password', () => { ... })
+  })
+  describe('Token', () => {
+    it('should refresh expired token', () => { ... })
+  })
+})
+
+// Bad: 평면 구조, 컨텍스트 없음
+test('login works', () => { ... })
+test('logout works', () => { ... })
+```
+
+## Imports
+
+테스트 대상 도메인 모듈을 실제 import. import 문이 테스트 목적 이해를 위한 가장 강력한 신호.
+
+```typescript
+// Good: 명확한 도메인 imports
+import { OrderService } from "@/modules/order";
+import { PaymentValidator } from "@/validators/payment";
+
+// Bad: 테스트 유틸리티만, 도메인 컨텍스트 없음
+import { render } from "@/test-utils";
+```
 
 ## 모킹
 

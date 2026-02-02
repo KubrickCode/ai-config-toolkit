@@ -17,7 +17,26 @@ paths:
 
 ## 서브테스트
 
-패턴: `t.Run("케이스명", func(t *testing.T) {...})`. 각 케이스는 독립 실행 가능해야 함. 병렬 실행 시 `t.Parallel()` 호출.
+`t.Run()`으로 도메인 컨텍스트 계층 제공. 서브테스트 경로가 가장 강력한 구조적 신호.
+
+```go
+// Good: Domain > Feature > Scenario 계층
+func TestAuthService(t *testing.T) {
+    t.Run("Login", func(t *testing.T) {
+        t.Run("valid credentials", func(t *testing.T) { ... })
+        t.Run("invalid password", func(t *testing.T) { ... })
+    })
+    t.Run("Token", func(t *testing.T) {
+        t.Run("refresh expired", func(t *testing.T) { ... })
+    })
+}
+
+// Bad: 평면 구조
+func TestLoginWorks(t *testing.T) { ... }
+func TestLogoutWorks(t *testing.T) { ... }
+```
+
+각 케이스는 독립 실행 가능해야 함. 병렬 실행 시 `t.Parallel()` 호출.
 
 ## 테이블 기반 테스트
 
@@ -30,8 +49,8 @@ tests := []struct {
     want    int
     wantErr bool
 }{
-    {"정상 케이스", 5, 10, false},
-    {"음수 입력", -1, 0, true},
+    {"normal case", 5, 10, false},
+    {"negative input", -1, 0, true},
 }
 for _, tt := range tests {
     t.Run(tt.name, func(t *testing.T) {
@@ -40,6 +59,21 @@ for _, tt := range tests {
         if got != tt.want { ... }
     })
 }
+```
+
+## Imports
+
+테스트 대상 도메인 패키지를 실제 import. import 문이 테스트 목적 이해를 위한 가장 강력한 신호.
+
+```go
+// Good: 명확한 도메인 imports
+import (
+    "myapp/modules/order"
+    "myapp/validators/payment"
+)
+
+// Bad: 테스트 유틸리티만, 도메인 컨텍스트 없음
+import "testing"
 ```
 
 ## 모킹
