@@ -4,6 +4,17 @@
     "command": "bash /workspaces/ai-config-toolkit/.claude/statusline.sh"
   },
   "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /workspaces/ai-config-toolkit/.claude/notify.sh '📦 Compact completed!'"
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Write|Edit",
