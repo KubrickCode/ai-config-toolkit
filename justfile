@@ -24,3 +24,27 @@ lint target="all":
         exit 1
         ;;
     esac
+
+# 단일 파일 린트 (hooks에서 호출)
+lint-file file:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    case "{{ file }}" in
+      */justfile|*Justfile)
+        just --fmt --unstable
+        ;;
+      *.json|*.yml|*.yaml|*.md)
+        npx prettier --write "{{ file }}"
+        ;;
+      *.ts|*.tsx)
+        npx prettier --write "{{ file }}"
+        npx eslint --fix "{{ file }}" 2>/dev/null || true
+        ;;
+      *.go)
+        gofmt -w "{{ file }}"
+        go vet "{{ file }}" 2>/dev/null || true
+        ;;
+      *)
+        echo "No lint rule for: {{ file }}"
+        ;;
+    esac

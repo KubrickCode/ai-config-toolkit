@@ -4,6 +4,17 @@
     "command": "bash /workspaces/ai-config-toolkit/.claude/statusline.sh"
   },
   "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /workspaces/ai-config-toolkit/.claude/hooks/post-file-edit.sh"
+          }
+        ]
+      }
+    ],
     "PreToolUse": [
       {
         "matcher": "Bash",
