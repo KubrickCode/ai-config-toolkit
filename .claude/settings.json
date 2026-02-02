@@ -22,6 +22,10 @@
           {
             "type": "command",
             "command": "bash /workspaces/ai-config-toolkit/.claude/hooks/block-git-auto.sh"
+          },
+          {
+            "type": "command",
+            "command": "bash /workspaces/ai-config-toolkit/.claude/hooks/block-build.sh"
           }
         ]
       }

@@ -47,3 +47,18 @@ lint-file file:
         echo "No lint rule for: {{ file }}"
         ;;
     esac
+
+typecheck-file file:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    dir=$(dirname "{{ file }}")
+    while [[ "$dir" != "." && "$dir" != "/" ]]; do
+      if [[ -f "$dir/tsconfig.json" ]]; then
+        (cd "$dir" && npx tsc --noEmit --incremental)
+        exit 0
+      fi
+      dir=$(dirname "$dir")
+    done
+    if [[ -f "tsconfig.json" ]]; then
+      npx tsc --noEmit --incremental
+    fi

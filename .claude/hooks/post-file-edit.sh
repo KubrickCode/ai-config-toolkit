@@ -18,6 +18,12 @@ cd "$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 
 if command -v just &> /dev/null && [[ -f "justfile" ]]; then
     just lint-file "$FILE_PATH" 2>&1 || true
+
+    case "$FILE_PATH" in
+      *.ts|*.tsx)
+        just typecheck-file "$FILE_PATH" 2>&1 || true
+        ;;
+    esac
 fi
 
 exit 0
