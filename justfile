@@ -17,7 +17,7 @@ lint target="all":
         just --fmt --unstable
         ;;
       config)
-        npx prettier --write "**/*.{json,yml,yaml,md}"
+        npx prettier --write --cache "**/*.{json,yml,yaml,md}"
         ;;
       *)
         echo "Unknown target: {{ target }}"
@@ -34,10 +34,10 @@ lint-file file:
         just --fmt --unstable
         ;;
       *.json|*.yml|*.yaml|*.md)
-        npx prettier --write "{{ file }}"
+        npx prettier --write --cache "{{ file }}"
         ;;
       *.ts|*.tsx)
-        npx prettier --write "{{ file }}"
+        npx prettier --write --cache "{{ file }}"
         npx eslint --fix "{{ file }}" 2>/dev/null || true
         ;;
       *.go)
