@@ -56,9 +56,8 @@ You **MUST** consider the user input before proceeding (if not empty).
 6. **Review Principle Violations**:
    - Create Complexity Tracking table if coding principle violations are necessary
 
-7. **Write Documents** (Dual Language):
-   - Create `docs/work/{name}/plan.ko.md` (Korean - for user reference)
-   - Create `docs/work/{name}/plan.md` (English - for agent consumption)
+7. **Write Document**:
+   - Create `docs/work/{name}/plan.md` (Korean)
 
 ---
 
@@ -66,12 +65,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ### 📝 Documentation Language
 
-**CRITICAL**: You must generate **TWO versions** of all documents:
-
-1. **Korean version** (`plan.ko.md`): For user reference - written in Korean
-2. **English version** (`plan.md`): For agent consumption - written in English
-
-**Both versions must contain identical structure and information**, only the language differs.
+**CRITICAL**: All documents must be written in **Korean**.
 
 ### ✅ Must Do
 
@@ -166,10 +160,7 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 ## Document Template
 
-Files to create:
-
-- `docs/work/{task-name}/plan.ko.md` (Korean version)
-- `docs/work/{task-name}/plan.md` (English version)
+File to create: `docs/work/{task-name}/plan.md` (Korean)
 
 ```markdown
 # [Task Name] - Implementation Plan

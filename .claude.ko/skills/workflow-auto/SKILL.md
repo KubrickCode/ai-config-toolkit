@@ -51,9 +51,7 @@ $ARGUMENTS
 3. 2-4개 해결방안 조사
 4. 최종 방안 선택 및 반려 이유 명시
 5. 확인 질문 생성 (최대 3개)
-6. 문서 작성:
-   - `docs/work/{작업명}/analysis.ko.md`
-   - `docs/work/{작업명}/analysis.md`
+6. 문서 작성: `docs/work/{작업명}/analysis.md` (한글)
 
 **workflow-analyze의 전체 템플릿 사용** (간소화 X).
 
@@ -70,9 +68,7 @@ $ARGUMENTS
 3. 영향 범위 파악
 4. **단일 커밋 계획 수립** (커밋 분리 없음)
 5. 원칙 위반 시 정당화 검토
-6. 문서 작성:
-   - `docs/work/{작업명}/plan.ko.md`
-   - `docs/work/{작업명}/plan.md`
+6. 문서 작성: `docs/work/{작업명}/plan.md` (한글)
 
 **workflow-plan의 전체 템플릿 사용** (간소화 X).
 
@@ -141,13 +137,11 @@ $ARGUMENTS
 
 ```
 docs/work/{작업명}/
-├── analysis.ko.md          (한글 - workflow-analyze)
-├── analysis.md             (영어 - workflow-analyze)
-├── plan.ko.md              (한글 - workflow-plan)
-├── plan.md                 (영어 - workflow-plan)
+├── analysis.md             (한글 - workflow-analyze)
+├── plan.md                 (한글 - workflow-plan)
 └── summary-commit-1.md     (한글 - workflow-execute)
 
-commit_message.md           (commit - 한글/영어 버전)
+commit_message.md           (commit)
 ```
 
 ---

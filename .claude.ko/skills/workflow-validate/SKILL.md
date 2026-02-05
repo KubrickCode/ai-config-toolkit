@@ -47,9 +47,8 @@ $ARGUMENTS
    - 상태 판단: ✅ 성공 / ⚠️ 부분 성공 / ❌ 실패
    - 발견사항 및 제약사항 문서화
 
-6. **문서 작성** (이중 언어):
-   - `docs/work/{name}/validation.ko.md` 생성 (한글 - 사용자 참고용)
-   - `docs/work/{name}/validation.md` 생성 (영어 - 에이전트 실행용)
+6. **문서 작성**:
+   - `docs/work/{name}/validation.md` 생성 (한글)
    - 명확한 다음 단계 권장사항 포함
 
 ---
@@ -58,12 +57,7 @@ $ARGUMENTS
 
 ### 📝 문서 작성 언어
 
-**중요**: 모든 문서를 **두 가지 버전**으로 생성해야 합니다:
-
-1. **한글 버전** (`validation.ko.md`): 사용자 참고용 - 한국어로 작성
-2. **영어 버전** (`validation.md`): 에이전트 실행용 - 영어로 작성
-
-**두 버전 모두 동일한 구조와 정보를 포함**해야 하며, 언어만 다릅니다.
+**중요**: 모든 문서는 **한글**로 작성해야 합니다.
 
 ### 🎯 검증 원칙
 
@@ -123,8 +117,7 @@ $ARGUMENTS
 
 생성할 파일:
 
-- `docs/work/{작업명}/validation.ko.md` (한글 버전)
-- `docs/work/{작업명}/validation.md` (영어 버전)
+생성할 파일: `docs/work/{작업명}/validation.md` (한글)
 
 ### 템플릿 A: AI 완료 검증
 

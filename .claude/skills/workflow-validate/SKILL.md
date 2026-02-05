@@ -47,9 +47,8 @@ $ARGUMENTS
    - Determine status: ✅ Success / ⚠️ Partial Success / ❌ Failure
    - Document findings and constraints
 
-6. **Write Documents** (Dual Language):
-   - Create `docs/work/{name}/validation.ko.md` (Korean - for user reference)
-   - Create `docs/work/{name}/validation.md` (English - for agent consumption)
+6. **Write Document**:
+   - Create `docs/work/{name}/validation.md` (Korean)
    - Include clear next steps recommendation
 
 ---
@@ -58,12 +57,7 @@ $ARGUMENTS
 
 ### 📝 Documentation Language
 
-**CRITICAL**: You must generate **TWO versions** of all documents:
-
-1. **Korean version** (`validation.ko.md`): For user reference - written in Korean
-2. **English version** (`validation.md`): For agent consumption - written in English
-
-**Both versions must contain identical structure and information**, only the language differs.
+**CRITICAL**: All documents must be written in **Korean**.
 
 ### 🎯 Validation Principles
 
