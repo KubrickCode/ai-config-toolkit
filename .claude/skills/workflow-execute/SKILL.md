@@ -76,7 +76,11 @@ Examples:
 
 - Faithfully follow plan.md checklist
 - **Strictly follow** coding principles
-- Write tests
+- **Follow Test Requirement** from plan.md:
+  - `TDD`: Write failing test → Implement → Verify pass
+  - `TEST-AFTER`: Implement → Write test → Verify
+  - `NO-TEST`: Implement only
+- **Atomic commits**: Tests and implementation in SAME commit (never separate)
 - Auto-generate summary
 
 ### ❌ Must Not Do
@@ -84,12 +88,17 @@ Examples:
 - Ignore checklist
 - Violate coding principles (without justification)
 - Skip verification
+- Commit implementation without tests (when TDD/TEST-AFTER)
+- Create separate "add tests" commit
 
 ### 🎯 Implementation Rules
 
 - **Setup first**: Initialize project structure, dependencies, configuration
-- **Tests before code**: If you need to write tests
 - **Core development**: Implement models, services, CLI commands
+- **TDD workflow** (when plan specifies `TDD`):
+  1. Write test that fails (RED)
+  2. Implement minimum to pass (GREEN)
+  3. Refactor if needed
 
 ### 📊 Progress Tracking
 
