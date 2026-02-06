@@ -1,6 +1,6 @@
 ---
 name: prepare-pr
-description: 여러 커밋을 분석하여 PR 제목과 설명 생성 (한국어/영어)
+description: 여러 커밋을 분석하여 PR 제목과 설명 생성 (한국어/영어). 단일 커밋 PR은 커밋 메시지를 직접 사용할 것.
 allowed-tools: Bash(git:*), Write
 disable-model-invocation: true
 ---
@@ -17,15 +17,6 @@ disable-model-invocation: true
 - 원격 브랜치: !git branch -r --list 'origin/main' 'origin/master' 2>/dev/null
 - 분기 이후 커밋: !git log --oneline origin/HEAD..HEAD 2>/dev/null || git log --oneline origin/main..HEAD 2>/dev/null || git log --oneline origin/master..HEAD 2>/dev/null || echo "베이스 브랜치 감지 불가"
 - 변경 파일 요약: !git diff --stat origin/HEAD..HEAD 2>/dev/null || git diff --stat origin/main..HEAD 2>/dev/null || git diff --stat origin/master..HEAD 2>/dev/null
-
-## 이 명령의 기능
-
-1. 베이스 브랜치(main/master) 자동 감지 또는 인자로 지정된 브랜치 사용
-2. 베이스부터 현재 HEAD까지 모든 커밋 수집
-3. 커밋 메시지와 변경 파일 분석
-4. 통합된 PR 제목 생성 (Conventional Commits 스타일)
-5. 요약, 변경사항, 관련 이슈를 포함한 PR 설명 생성
-6. **pr_content.md 파일로 저장하여 복사하기 편리하게 제공**
 
 ## PR 제목 형식 (Conventional Commits)
 
@@ -98,9 +89,15 @@ fix #{issue_number}
 
 ## 중요 사항
 
-- 이 명령은 PR 내용만 생성하며 - 실제 PR을 생성하지 않는다
-- **pr_content.md 파일에 두 버전 모두 저장** - 원하는 것 선택하여 사용
-- 단일 커밋 PR의 경우 커밋 메시지를 직접 사용하는 것을 고려
-- 브랜치명에 이슈 번호가 포함되어 있으면 자동 감지됨
-- 생성된 파일에서 내용 복사 후 GitHub PR 폼에 붙여넣기
-- CLI 워크플로우의 경우 생성된 내용으로 `gh pr create` 사용
+- 이 명령은 PR 내용만 생성하며 -- 실제 PR을 생성하지 않는다
+- **pr_content.md 파일에 두 버전 모두 저장** -- 원하는 것 선택하여 사용
+- 브랜치명 이슈 번호 자동 감지
+- CLI 워크플로우: 생성된 내용으로 `gh pr create` 사용
+
+## 실행
+
+1. 베이스 브랜치 결정 (인자 또는 origin/HEAD에서 자동 감지)
+2. git log, git diff로 커밋 정보 수집
+3. 커밋 분석: 타입 카운트, 주요 타입 식별, 스코프 및 이슈 번호 추출
+4. PR 제목(≤50자) 및 본문 생성 (한국어/영어 양쪽)
+5. `pr_content.md`에 작성

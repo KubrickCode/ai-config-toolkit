@@ -1,160 +1,76 @@
 ---
 name: ultra-think
 description: Deep analysis and problem solving with multi-dimensional thinking. Use when facing complex architectural decisions, strategic planning, or problems requiring thorough analysis from multiple perspectives.
-argument-hint: [problem or question to analyze]
 ---
 
-# Deep Analysis and Problem Solving Mode
+# Deep Analysis Mode
 
-Deep analysis and problem solving mode
+Analyze the following problem with maximum depth and rigor: $ARGUMENTS
 
-## Instructions
+## Analysis Requirements
 
-1. **Initialize Ultra Think Mode**
-   - Acknowledge the request for enhanced analytical thinking
-   - Set context for deep, systematic reasoning
-   - Prepare to explore the problem space comprehensively
+1. **Identify the core challenge** — separate symptoms from root causes
+2. **Surface hidden constraints** — question stated assumptions, identify unstated ones
+3. **Generate 3+ distinct approaches** — genuinely different strategies, not variations of one idea
+4. **Evaluate trade-offs honestly** — not all pros/cons are equal; weight by actual impact
+5. **Recommend with rationale** — state confidence level and what would change your mind
 
-2. **Parse the Problem or Question**
-   - Extract the core challenge from: $ARGUMENTS
-   - Identify all stakeholders and constraints
-   - Recognize implicit requirements and hidden complexities
-   - Question assumptions and surface unknowns
+## Quality Standards
 
-3. **Multi-Dimensional Analysis**
-   Approach the problem from multiple angles:
+### Anti-Overconfidence Rules
 
-   ### Technical Perspective
-   - Analyze technical feasibility and constraints
-   - Consider scalability, performance, and maintainability
-   - Evaluate security implications
-   - Assess technical debt and future-proofing
+- **Default confidence is Medium.** High confidence requires: one approach is Pareto-dominant, OR a hard constraint eliminates alternatives.
+- **State uncertainty explicitly**: "I'm uncertain about X because Y" is more valuable than false precision.
+- **No manufactured balance**: If one option is clearly superior, say so. If options are genuinely close, say that instead.
+- **Forbidden language**: "obviously", "clearly", "simply", "no-brainer", "the only real option"
+- **Distinguish fact from inference**: Mark claims as "confirmed" (from code/docs), "likely" (strong evidence), or "uncertain" (inference).
 
-   ### Business Perspective
-   - Understand business value and ROI
-   - Consider time-to-market pressures
-   - Evaluate competitive advantages
-   - Assess risk vs. reward trade-offs
+### Depth Over Breadth
 
-   ### User Perspective
-   - Analyze user needs and pain points
-   - Consider usability and accessibility
-   - Evaluate user experience implications
-   - Think about edge cases and user journeys
+- Fewer perspectives analyzed deeply beat many perspectives analyzed superficially.
+- Skip perspectives irrelevant to the specific problem (not every problem needs a "business perspective").
+- Second-order effects matter more than comprehensive first-order coverage.
 
-   ### System Perspective
-   - Consider system-wide impacts
-   - Analyze integration points
-   - Evaluate dependencies and coupling
-   - Think about emergent behaviors
+## Output Structure
 
-4. **Generate Multiple Solutions**
-   - Brainstorm at least 3-5 different approaches
-   - For each approach, consider:
-     - Pros and cons
-     - Implementation complexity
-     - Resource requirements
-     - Potential risks
-     - Long-term implications
-   - Include both conventional and creative solutions
-   - Consider hybrid approaches
+```markdown
+## Problem Analysis
 
-5. **Deep Dive Analysis**
-   For the most promising solutions:
-   - Create detailed implementation plans
-   - Identify potential pitfalls and mitigation strategies
-   - Consider phased approaches and MVPs
-   - Analyze second and third-order effects
-   - Think through failure modes and recovery
+- Core challenge (1-2 sentences)
+- Key constraints
+- What makes this decision difficult
 
-6. **Cross-Domain Thinking**
-   - Draw parallels from other industries or domains
-   - Apply design patterns from different contexts
-   - Consider biological or natural system analogies
-   - Look for innovative combinations of existing solutions
+## Approaches
 
-7. **Challenge and Refine**
-   - Play devil's advocate with each solution
-   - Identify weaknesses and blind spots
-   - Consider "what if" scenarios
-   - Stress-test assumptions
-   - Look for unintended consequences
+### Approach 1: [Name]
 
-8. **Synthesize Insights**
-   - Combine insights from all perspectives
-   - Identify key decision factors
-   - Highlight critical trade-offs
-   - Summarize innovative discoveries
-   - Present a nuanced view of the problem space
+- Description, pros, cons, risks
+- Confidence: [High/Medium/Low] — [basis]
 
-9. **Provide Structured Recommendations**
-   Present findings in a clear structure:
+### Approach 2: [Name]
 
-   ## Problem Analysis
-   - Core challenge
-   - Key constraints
-   - Critical success factors
+[Same structure]
 
-   ## Solution Options
+## Recommendation
 
-   ### Option 1: [Name]
-   - Description
-   - Pros/Cons
-   - Implementation approach
-   - Risk assessment
+- **Recommended**: [Approach N]
+- **Confidence**: [High/Medium/Low]
+- **Rationale**: [Why — acknowledging what you're giving up]
+- **Would change if**: [What new information would alter this recommendation]
 
-   ### Option 2: [Name]
+## Uncertainties
 
-   [Similar structure]
-
-   ## Recommendation
-   - Recommended approach
-   - Rationale
-   - Implementation roadmap
-   - Success metrics
-   - Risk mitigation plan
-
-   ## Alternative Perspectives
-   - Contrarian view
-   - Future considerations
-   - Areas for further research
-
-10. **Meta-Analysis**
-    - Reflect on the thinking process itself
-    - Identify areas of uncertainty
-    - Acknowledge biases or limitations
-    - Suggest additional expertise needed
-    - Provide confidence levels for recommendations
-
-## Usage Examples
-
-```bash
-# Architectural decision
-/ultra-think Should we migrate to microservices or improve our monolith?
-
-# Complex problem solving
-/ultra-think How do we scale our system to handle 10x traffic while reducing costs?
-
-# Strategic planning
-/ultra-think What technology stack should we choose for our next-gen platform?
-
-# Design challenge
-/ultra-think How can we improve our API to be more developer-friendly while maintaining backward compatibility?
+- [What you don't know that matters]
+- [Where you might be wrong]
 ```
 
-## Key Principles
+## Self-Verification (Required)
 
-- **First Principles Thinking**: Break down to fundamental truths
-- **Systems Thinking**: Consider interconnections and feedback loops
-- **Probabilistic Thinking**: Work with uncertainties and ranges
-- **Inversion**: Consider what to avoid, not just what to do
-- **Second-Order Thinking**: Consider consequences of consequences
+Before presenting the analysis, verify:
 
-## Output Expectations
-
-- Comprehensive analysis (typically 2-4 pages of insights)
-- Multiple viable solutions with trade-offs
-- Clear reasoning chains
-- Acknowledgment of uncertainties
-- Actionable recommendations
-- Novel insights or perspectives
+- [ ] Each approach has at least one genuine weakness identified (not a token con)
+- [ ] Confidence level is stated and justified for each approach and the final recommendation
+- [ ] "Uncertainties" section is non-empty and substantive
+- [ ] No recommendation uses forbidden confident language
+- [ ] Approaches are genuinely distinct (not minor variations)
+- [ ] Analysis depth matches problem complexity (simple problems get concise analysis)

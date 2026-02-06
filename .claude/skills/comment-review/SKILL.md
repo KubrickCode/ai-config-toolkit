@@ -33,14 +33,6 @@ $ARGUMENTS
 
 ## Comment Principles
 
-### 🚫 The Comment Problem
-
-- **Comments rot**: Code changes, comments don't. Result: lies in your codebase.
-- **Comments mask bad code**: If you need a comment, your code naming or structure is wrong.
-- **Comments are maintenance burden**: Every comment is code you must keep synchronized.
-
-**Rule of thumb**: If you're writing a comment, pause and ask "How can I eliminate this with better code?"
-
 ### ✅ The ONLY Legitimate Comments
 
 These are the **exclusive** cases where comments are allowed. Everything else MUST be removed or refactored.

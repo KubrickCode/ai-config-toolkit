@@ -1,6 +1,6 @@
 ---
 name: workflow-analyze
-description: Analyze issue and generate analysis.md with solution approaches. Use when starting a new task or feature to thoroughly analyze the problem and compare solution options.
+description: Analyze issue and generate analysis.md with solution approaches. Use when starting a new task or feature to thoroughly analyze the problem, compare solution options, and produce a structured decision document. Triggers on task analysis, solution comparison, and pre-implementation investigation.
 disable-model-invocation: true
 ---
 
@@ -115,19 +115,13 @@ Write the Conclusion (TL;DR) section last, even though it appears first in the d
 - **Explain user impact** (Solution Approach) - How will it be used?
 - **Evaluate technical feasibility** (Solution Approach) - Why is it suitable?
 - Evaluate solutions based on coding principles
-- Concise bullet points
-- **NEEDS CLARIFICATION maximum 3**
-- Use reasonable defaults
+- **NEEDS CLARIFICATION maximum 3** - use reasonable defaults for the rest
 
 ### ❌ Must Not Do
 
-- Verbose explanations
-- Duplicate content
 - **Only abstract problem definitions** (without concrete examples)
 - **Excessive technical details** (going into implementation level)
 - **Missing user perspective** (talking only about technology)
-- Solutions that conflict with coding principles
-- Infinite questions
 - **Listing obvious things** (e.g., React state, JSON schema)
 
 ---

@@ -119,8 +119,6 @@ Premature decomposition without understanding the whole leads to wrong boundarie
 
 ### Must Not Do
 
-- Verbose explanations
-- Duplicate content across sub-task descriptions
 - **Create sub-tasks for obvious setup** (project init, linter config, etc.) unless genuinely complex
 - **Split by technical layer** (types → logic → tests → UI)
 - **Add tasks not in the original scope** without explicit marking
