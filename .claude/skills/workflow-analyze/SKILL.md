@@ -30,9 +30,10 @@ You **MUST** consider the user input before proceeding (if not empty).
    - Analyze pros/cons of each approach
    - Evaluate based on coding principles
 
-4. **Final Selection**:
-   - Choose the most appropriate approach
-   - Clarify rejection reasons
+4. **Assess Decision Confidence & Final Selection**:
+   - After completing ALL analysis, assess decision confidence (see Decision Honesty rule)
+   - **Decisive** → Select the approach, clarify rejection reasons
+   - **Advisory** → Recommend the approach, present alternatives with deciding factors for user
 
 5. **Generate Questions**:
    - Select **maximum 3** unclear items only
@@ -49,12 +50,18 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 **CRITICAL**: All documents must be written in **Korean**.
 
+### 📝 Writing Order
+
+**Complete the analysis body (Problem Definition through Solution Investigation) in your reasoning first.
+Write the Conclusion (TL;DR) section last, even though it appears first in the document.**
+
 ### 🎯 Balanced Analysis Principles
 
 1. **Problem Definition**: Include concrete scenarios rather than abstract descriptions
 2. **Solution Approach**: Consider both user perspective and technical feasibility
 3. **Implementation Method**: Keep core changes concise, specify new dependencies
 4. **Completion Criteria**: Separate feature verification and technical implementation
+5. **Weighted Evaluation**: Not all pros/cons are equal. Identify which criteria matter most for this problem before comparing. A single critical advantage can outweigh multiple minor ones.
 
 ### 🎭 Anti-Bias Rules (CRITICAL)
 
@@ -71,6 +78,31 @@ You **MUST** consider the user input before proceeding (if not empty).
 3. **Neutral Language**
    - Forbidden: "simply", "obviously", "clearly", "just", "merely"
    - Use: "may", "could", "potentially"
+
+4. **Decision Honesty (CRITICAL)**
+   - After completing all analysis, assess decision confidence before writing the conclusion
+   - **Decisive** (select definitively) — ALL conditions must be met:
+     - One approach is superior or equal in all evaluation dimensions, inferior in none (Pareto dominant)
+     - OR a technical/project constraint eliminates other approaches
+     - OR an explicit, unambiguous project convention determines the answer
+     - AND the deciding factor does NOT depend on user/team preferences or business context unknown to you
+   - **Advisory** (recommend, let user decide) — ANY condition is sufficient:
+     - Approaches have comparable trade-off profiles with strengths in different dimensions (name the dimensions)
+     - The deciding factor is a subjective preference (e.g., simplicity vs flexibility)
+     - The choice requires business/product context you do not have
+     - Risk tolerance or time horizon is the differentiator
+     - Differences between approaches are marginal
+   - **Default is Advisory.** Decisive requires proving no legitimate trade-off remains.
+   - Do NOT manufacture certainty. If the honest answer is "these are close", say so.
+
+   **Decision Type Examples**:
+   - Decisive: Project uses PostgreSQL; Approach A is PostgreSQL-based, Approach B is MongoDB-only → technical constraint, Decisive
+   - Advisory: Approach A is simpler but less extensible; Approach B is complex but highly extensible → depends on future scale and team preference → Advisory
+
+   **Additional forbidden expressions when using Decisive**:
+   - "no need to bother with ~" (dismissive of alternatives)
+   - "practically the only choice" (unless literally one option remains)
+   - "other approaches are not realistic" (requires specific evidence)
 
 ### ✅ Must Do
 
@@ -105,8 +137,18 @@ File to create: `docs/work/{task-name}/analysis.md` (Korean)
 
 ## 🎯 Conclusion (TL;DR)
 
+<!-- Decisive: use this format -->
+
+**Decision Type**: Decisive
 **Selected Approach**: [Approach Name]
 **Key Reason**: [Why this approach was chosen - 1-2 sentences]
+
+<!-- Advisory: use this format instead -->
+
+**Decision Type**: Advisory (user confirmation required)
+**Recommended Approach**: [Approach Name]
+**Key Reason**: [Why this approach is recommended - 1-2 sentences]
+**Consider Alternative When**: [Under what conditions Approach M would be better]
 
 ---
 
@@ -163,7 +205,11 @@ File to create: `docs/work/{task-name}/analysis.md` (Korean)
 
 ## ✅ Final Selection
 
+<!-- Decisive: use this format -->
+
+**Decision Type**: Decisive
 **Adopted**: Approach N
+**Decisive Basis**: [Which specific criterion was met — technical constraint / Pareto dominance / project convention]
 
 **Trade-offs Accepted** (if any):
 
@@ -180,6 +226,32 @@ File to create: `docs/work/{task-name}/analysis.md` (Korean)
 **Rejected Approaches** (include what you're losing):
 
 - Approach X: [Rejection reason] — Would have provided: [lost benefit]
+
+<!-- Advisory: use this format instead -->
+
+**Decision Type**: Advisory (user confirmation required)
+**Recommended**: Approach N
+**Strong Alternative**: Approach M
+
+**Comparison on Deciding Factors**:
+
+| Factor                 | Approach N | Approach M |
+| ---------------------- | ---------- | ---------- |
+| [Key differentiator 1] | ...        | ...        |
+| [Key differentiator 2] | ...        | ...        |
+
+**Why Approach N is Recommended**:
+
+- [Reasoning - acknowledging it's a preference call]
+
+**When to Choose Approach M Instead**:
+
+- [Specific conditions under which the alternative is better]
+
+**Decision Guide**:
+
+- Prioritize [Priority A] → Approach N
+- Prioritize [Priority B] → Approach M
 
 ---
 
@@ -225,6 +297,9 @@ File to create: `docs/work/{task-name}/analysis.md` (Korean)
 - [ ] Wrote what's true (no hiding, no inventing)
 - [ ] Rejected approaches' lost benefits acknowledged
 - [ ] Used neutral language ("may/could", not "will/obviously")
+- [ ] Decision confidence honestly assessed (did not force certainty on a subjective choice)
+- [ ] **If Decisive**: Would a colleague with a different opinion still find this convincing?
+- [ ] **If Decisive**: Were alternative approaches' strengths not understated?
 ```
 
 ---
