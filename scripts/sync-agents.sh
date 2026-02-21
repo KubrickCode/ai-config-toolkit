@@ -32,3 +32,14 @@ OUTPUT="$ROOT_DIR/AGENTS.md"
 } > "$OUTPUT"
 
 echo "Generated $OUTPUT"
+
+# Skills sync: .claude/skills/ → .agents/skills/
+SKILLS_SRC="$ROOT_DIR/.claude/skills"
+SKILLS_DST="$ROOT_DIR/.agents/skills"
+
+if [[ -d "$SKILLS_SRC" ]]; then
+  rm -rf "$SKILLS_DST"
+  mkdir -p "$SKILLS_DST"
+  cp -r "$SKILLS_SRC"/* "$SKILLS_DST"/
+  echo "Synced skills: $SKILLS_SRC → $SKILLS_DST"
+fi
