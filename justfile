@@ -48,6 +48,9 @@ lint-file file:
         ;;
     esac
 
+sync-agents:
+    bash scripts/sync-agents.sh
+
 typecheck-file file:
     #!/usr/bin/env bash
     set -euo pipefail
